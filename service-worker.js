@@ -7,6 +7,10 @@ importScripts(
 const CACHE_NAME = `${globalThis.packageConfig.name}@${globalThis.packageConfig.version}`;
 const isDev = location.hostname === 'localhost';
 
+const noCorsWhitelist = [
+  'https://www.youtube.com/iframe_api',
+];
+
 const getCache = () => caches.open(CACHE_NAME);
 
 // delete all caches (except the one to keep)
@@ -49,7 +53,9 @@ const getResponse = async url => {
 
   // otherwise fetch it
   // console.info('❌ CACHE MISS :', url.href);
-  const fetchedResponse = await fetch(url).catch(e => {
+  const fetchedResponse = await fetch(url, {
+    mode: noCorsWhitelist.includes(url) ? 'no-cors' : 'cors',
+  }).catch(e => {
     console.error(url);
     console.error(e);
   });
