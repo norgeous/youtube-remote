@@ -55,7 +55,7 @@ const getResponse = async url => {
   // otherwise fetch it
   // console.info('❌ CACHE MISS :', url.href);
   const mode = noCorsWhitelist.includes(url.href) ? 'no-cors' : 'cors';
-  console.log(url.href, mode);
+  // console.log(url.href, mode);
   const fetchedResponse = await fetch(url, { mode }).catch(e => {
     console.error(url);
     console.error(e);
