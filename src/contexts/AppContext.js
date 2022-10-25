@@ -5,13 +5,12 @@ import useYouTubeIframeApi from '../hooks/useYoutubeIframeApi';
 const AppContext = createContext({});
 
 export const AppProvider = ({ children }) => {
-  const YT = useYouTubeIframeApi();
+  const [player, playerState, volume, currentTime] = useYouTubeIframeApi('player');
 
   return (
     <AppContext.Provider
       value={{
-        test: 10,
-        YT,
+        player, playerState, volume, currentTime
       }}
     >
       {children}
