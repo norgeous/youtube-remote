@@ -30,6 +30,7 @@ const App = () => {
       new app {test}
       {typeof YT}
       <div id="player"/>
+      final
     </>
   );
 };
