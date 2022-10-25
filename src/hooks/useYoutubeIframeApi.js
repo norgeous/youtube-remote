@@ -60,7 +60,6 @@ const loadYouTubeIframeApi = () => {
     const script = document.createElement('script');
     script.src = 'https://www.youtube.com/iframe_api';
     script.async = true;
-    console.log('APPENDING');
     document.body.appendChild(script);
 
     window.onYouTubeIframeAPIReady = () => resolve(window.YT);
@@ -72,8 +71,8 @@ const loadYouTubeIframeApi = () => {
 const useYouTubeIframeApi = () => {
   const [x,setX] = useState();
 
-  useEffect(() => {
-    const y = loadYouTubeIframeApi();
+  useEffect(async () => {
+    const y = await loadYouTubeIframeApi();
     console.log(y);
     setX(y);
   }, []);
