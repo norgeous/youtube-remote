@@ -9,6 +9,7 @@ const isDev = location.hostname === 'localhost';
 
 const noCorsWhitelist = [
   'https://www.youtube.com/iframe_api',
+  'https://www.youtube.com/s/player/4bbf8bdb/www-widgetapi.vflset/www-widgetapi.js',
 ];
 
 const getCache = () => caches.open(CACHE_NAME);
@@ -54,7 +55,7 @@ const getResponse = async url => {
   // otherwise fetch it
   // console.info('❌ CACHE MISS :', url.href);
   const mode = noCorsWhitelist.includes(url.href) ? 'no-cors' : 'cors';
-  console.log(url, mode);
+  console.log(url.href, mode);
   const fetchedResponse = await fetch(url, { mode }).catch(e => {
     console.error(url);
     console.error(e);
