@@ -49,7 +49,7 @@ const getResponse = async url => {
 
   // otherwise fetch it
   // console.info('❌ CACHE MISS :', url.href);
-  const fetchedResponse = await fetch(url, { mode: 'no-cors' }).catch(e => {
+  const fetchedResponse = await fetch(url).catch(e => {
     console.error(url);
     console.error(e);
   });
