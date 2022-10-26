@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useAppContext } from '../contexts/AppContext';
 // import { BigEmoji } from '../styled-components/BigEmoji';
+import Search from './Search';
 
 const playlist = [
   'W-59sWasI98',
@@ -22,19 +23,6 @@ const App = () => {
     volume,
     currentTime,
   } = useAppContext();
-
-  const [pl,setPl] = useState(playlist);
-
-  const magicSearch = async (searchterm) => {
-    const url = `https://www.youtube.com/results?search_query=${searchterm}`;
-    // const url2 = encodeURIComponent(url);
-    const t = await fetch(`https://api.codetabs.com/v1/proxy/?quest=${url}`)
-      .then(res => res.text());
-      // .then(res => res.json());
-    const ids = [...new Set(t.match(/(?<=videoId":")([A-Za-z0-9_\-]{11})/g))];
-    console.log({url, t, ids})
-    setPl(ids);
-  };
 
   return (
     <>
@@ -68,13 +56,13 @@ const App = () => {
 
       <br/>
 
-      {playerState === 'PAUSED' && (<button onClick={() => player.playVideo()}>▶️</button>)}
+      {playerState !== 'PLAYING' && (<button onClick={() => player.playVideo()}>▶️</button>)}
       {playerState === 'PLAYING' && (<button onClick={() => player.pauseVideo()}>⏸️</button>)}
       
       {player?.isMuted?.() ? (
-        <button onClick={() => player.unMute()}>🔊</button>
+        <button onClick={() => player.unMute()}>🔇</button>
       ) : (
-        <button onClick={() => player.mute()}>🔇</button>
+        <button onClick={() => player.mute()}>🔊</button>
       )}
       <input
         style={{
@@ -90,25 +78,11 @@ const App = () => {
 
       {durationFormat(currentTime)} / {durationFormat(player?.getDuration?.())}
 
-      <button onClick={() => player.stopVideo()}>⏏️</button>
+      <button onClick={() => player.stopVideo()}>⏹</button>
 
       <hr />
 
-      <button onClick={() => magicSearch('sasasas')}>search sasasas</button>
-      <button onClick={() => magicSearch('czarface')}>search czarface</button>
-      <button onClick={() => magicSearch('mfdoom')}>search mfdoom</button>
-      <button onClick={() => magicSearch('luude')}>search luude</button>
-      <button onClick={() => magicSearch('mungos hifi')}>search mungos hifi</button>
-
-      <div>
-        {pl.map(id => (
-          <button onClick={() => player.loadVideoById(id)}>
-            <img src={`https://i.ytimg.com/vi/${id}/default.jpg`} />
-            <br />
-            {id}
-          </button>
-        ))}
-      </div>
+      <Search />
     </>
   );
 };
