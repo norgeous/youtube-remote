@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAppContext } from '../contexts/AppContext';
+import { BigEmoji } from '../styled-components/BigEmoji';
 
 // import yt from 'youtube-search-without-api-key';
 
@@ -37,6 +38,17 @@ const App = () => {
 
   return (
     <>
+      <div>
+        <BigEmoji>📺</BigEmoji>
+        Player
+      </div>
+      <div>
+        <BigEmoji>🎛️</BigEmoji>
+        Controls
+      </div>
+
+       
+      
       <div id="player"/>
       <br />
       <input
@@ -51,6 +63,20 @@ const App = () => {
         onChange={event => player.seekTo(event.target.value)}
       />
       {durationFormat(currentTime)} / {durationFormat(player?.getDuration?.())}<br/>
+
+      <br/>
+
+      <input
+        style={{
+          width: 100,
+          accentColor: 'white',
+        }}
+        type="range"
+        min={0}
+        max={100}
+        value={volume}
+        onChange={event => player.setVolume(event.target.value)}
+      />
 
       <div>
         {pl.map(id => (
@@ -68,8 +94,6 @@ const App = () => {
       </div>
       title: {player?.videoTitle}<br/>
       state: {playerState}<br/>
-      vol: {volume}<br/>
-
 
       <div>
         is muted: {player?.isMuted?.() ? 'true' : 'false'}<br/>
