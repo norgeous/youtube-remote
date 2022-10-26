@@ -29,7 +29,8 @@ const App = () => {
   const [pl,setPl] = useState(playlist);
 
   const magicSearch = async (searchterm) => {
-    const t = await fetch('https://cors-anywhere.herokuapp.com/https://www.youtube.com/results?search_query=sasasas').then(res => res.text());
+    const t = await fetch(`https://cors-anywhere.herokuapp.com/https://www.youtube.com/results?search_query=${searchterm}`)
+      .then(res => res.text());
     const ids = [...new Set(t.match(/(?<=videoId":")([A-Za-z0-9_\-]{11})/g))];
     setPl(ids);
   };
@@ -54,7 +55,7 @@ const App = () => {
       <div>
         {pl.map(id => (
           <button onClick={() => player.loadVideoById(id)}>
-            <img src={`https://i.ytimg.com/vi/${id}/hq720.jpg`} width={100} />
+            <img src={`https://i.ytimg.com/vi/${id}/default.jpg`} />
             <br />
             {id}
           </button>
@@ -75,7 +76,8 @@ const App = () => {
         <button onClick={() => player.mute()}>mute</button>
         <button onClick={() => player.unMute()}>unMute</button>
       </div>
-      <button onClick={() => magicSearch()}>search</button>
+      <button onClick={() => magicSearch('sasasas')}>search sasasas</button>
+      <button onClick={() => magicSearch('czarface')}>search czarface</button>
     </>
   );
 };
