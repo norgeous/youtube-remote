@@ -58,7 +58,9 @@ const PlayerControls = () => {
           onChange={event => player.setVolume(event.target.value)}
         />
 
-        {durationFormat(currentTime)} / {durationFormat(player?.getDuration?.())}
+        <span>{durationFormat(currentTime)} / {durationFormat(player?.getDuration?.())}</span>
+
+        <span>[{playerState}]</span>
 
         <Spacer />
 

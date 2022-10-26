@@ -8,7 +8,6 @@ import PlayerControls from './PlayerControls';
 const App = () => {
   const {
     player,
-    playerState,
   } = useAppContext();
 
   return (
@@ -20,7 +19,7 @@ const App = () => {
       <br />
       <PlayerControls />
       <br />
-      {player?.videoTitle} [{playerState}]<br/>
+      {player?.videoTitle}<br/>
       <br />
       <Playlist />
       <br />
