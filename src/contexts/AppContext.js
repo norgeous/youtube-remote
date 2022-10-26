@@ -9,6 +9,7 @@ const defaultPlaylist = [
   'W-59sWasI98',
   'bMaN0rgPs4c',
   'fYiuDNUeDRM',
+  'VjcV_s9EyBU',
 ];
 
 export const AppProvider = ({ children }) => {

@@ -1,11 +1,12 @@
 import React from 'react';
 import { useAppContext } from '../contexts/AppContext';
 import styled from 'styled-components';
+import EmojiButton from './EmojiButton';
 
 const List = styled.section`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  padding: 10px;
 `;
 
 const Item = styled.button`
@@ -35,6 +36,8 @@ const Playlist = () => {
           {playlistPlayheadIndex === index && '👉'}
           <img src={`https://i.ytimg.com/vi/${id}/default.jpg`} width="80" />
           {id}
+          <div style={{flexGrow:1}} />
+          <EmojiButton>🗑️</EmojiButton>
         </Item>
       ))}
     </List>

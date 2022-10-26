@@ -1,7 +1,18 @@
 import React from 'react';
+import styled from 'styled-components';
 import { useAppContext } from '../contexts/AppContext';
 import durationFormat from '../utils/durationFormat';
 import EmojiButton from './EmojiButton';
+
+const Container = styled.div`
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  width: 640px;
+`;
+const Spacer = styled.div`
+  flex-grow: 1;
+`;
 
 const PlayerControls = () => {
   const {
@@ -24,32 +35,36 @@ const PlayerControls = () => {
         value={currentTime}
         onChange={event => player.seekTo(event.target.value)}
       />
+      <Container>
 
-      <br/>
+        {playerState !== 'PLAYING' && (<EmojiButton onClick={() => player.playVideo()}>▶️</EmojiButton>)}
+        {playerState === 'PLAYING' && (<EmojiButton onClick={() => player.pauseVideo()}>⏸️</EmojiButton>)}
+        
+        {player?.isMuted?.() ? (
+          <EmojiButton onClick={() => player.unMute()}>🔇</EmojiButton>
+        ) : (
+          <EmojiButton onClick={() => player.mute()}>🔊</EmojiButton>
+        )}
+        <input
+          style={{
+            width: 60,
+            accentColor: 'white',
+          }}
+          type="range"
+          min={0}
+          max={100}
+          value={volume}
+          onChange={event => player.setVolume(event.target.value)}
+        />
 
-      {playerState !== 'PLAYING' && (<EmojiButton onClick={() => player.playVideo()}>▶️</EmojiButton>)}
-      {playerState === 'PLAYING' && (<EmojiButton onClick={() => player.pauseVideo()}>⏸️</EmojiButton>)}
-      
-      {player?.isMuted?.() ? (
-        <EmojiButton onClick={() => player.unMute()}>🔇</EmojiButton>
-      ) : (
-        <EmojiButton onClick={() => player.mute()}>🔊</EmojiButton>
-      )}
-      <input
-        style={{
-          width: 60,
-          accentColor: 'white',
-        }}
-        type="range"
-        min={0}
-        max={100}
-        value={volume}
-        onChange={event => player.setVolume(event.target.value)}
-      />
+        {durationFormat(currentTime)} / {durationFormat(player?.getDuration?.())}
 
-      {durationFormat(currentTime)} / {durationFormat(player?.getDuration?.())}
+        <Spacer />
 
-      <EmojiButton onClick={() => player.stopVideo()}>⏹</EmojiButton>
+        <EmojiButton>⚙️</EmojiButton>
+        <EmojiButton onClick={() => player.stopVideo()}>⏹</EmojiButton>
+        <EmojiButton>↗️</EmojiButton>
+      </Container>
     </>
   );
 };

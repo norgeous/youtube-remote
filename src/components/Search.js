@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAppContext } from '../contexts/AppContext';
+import EmojiButton from './EmojiButton';
 
 const predefinedSearchterms = [
   'sasasas',
@@ -31,10 +32,10 @@ const Search = () => {
           <option value={term}>{term}</option>
         ))}
       </datalist>
-      <button onClick={() => setInputValue('')}>❎</button>
-      <button onClick={() => search(inputValue)}>
+      <EmojiButton onClick={() => setInputValue('')}>❎</EmojiButton>
+      <EmojiButton onClick={() => search(inputValue)}>
         {searchLoading ? '🌀' : '🔍'}
-      </button>
+      </EmojiButton>
     </>
   );
 };

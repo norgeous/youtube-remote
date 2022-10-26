@@ -23,18 +23,13 @@ const loadYouTubeIframeApi = () => {
 
 const createYouTubeIframe = ({ YT, elementId, onReady, onStateChange }) => {
   const newPlayer = new YT.Player(elementId, {
-    // videoId: playlist[0],
     width: '640',
     height: '360',
     playerVars: {
-      'autoplay': 1,
-      // 'playsinline': 1,
-      // 'controls': 0, 
-      // 'autohide': 1,
-      // 'showinfo' : 0,
-      // 'wmode': 'opaque',
-      // 'rel': 0,
-      // 'loop': 0,
+      autoplay: 1,
+      playsinline: 1,
+      modestbranding: 1,
+      // controls: 0,
     },
     events: {
       onReady,

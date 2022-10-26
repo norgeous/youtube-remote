@@ -8,7 +8,7 @@ const Button = styled.button`
   margin: 0;
   font-size: 30px;
   cursor: pointer;
-  display: block;
+  display: inline-block;
 `;
 
 const EmojiButton = ({ children, spin = false, ...props }) => (

@@ -14,15 +14,16 @@ const App = () => {
   return (
     <>
       <Search />
-      <hr />
-      <div id="player"/> 
+      <br />
+      <br />
+      <div id="player"/>
+      <br />
       <PlayerControls />
-      <hr />
-      title: {player?.videoTitle}<br/>
-      state: {playerState}<br/>
-      <hr />
+      <br />
+      {player?.videoTitle} [{playerState}]<br/>
+      <br />
       <Playlist />
-      <hr />
+      <br />
       <SearchResults />
     </>
   );
