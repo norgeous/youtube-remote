@@ -19,7 +19,9 @@ const App = () => {
       <br />
       <PlayerControls />
       <br />
-      {player?.videoTitle}<br/>
+      <h1 style={{ fontSize: 20 }}>
+        {player?.videoTitle || <>&nbsp;</>}
+      </h1>
       <br />
       <Playlist />
       <br />

@@ -64,6 +64,7 @@ const PlayerControls = () => {
 
         <Spacer />
 
+        <EmojiButton>📤</EmojiButton>
         <EmojiButton>⚙️</EmojiButton>
         <EmojiButton onClick={() => player.stopVideo()}>⏹</EmojiButton>
         <EmojiButton>↗️</EmojiButton>
