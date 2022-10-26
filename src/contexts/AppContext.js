@@ -12,15 +12,17 @@ const defaultPlaylist = [
 
 export const AppProvider = ({ children }) => {
   const [player, playerState, volume, currentTime] = useYouTubeIframeApi('player');
-  const [playlist, setPlaylist] = useState(defaultPlaylist);
   const [inputValue, setInputValue] = useState('');
   const [search, results, searchLoading] = useScrapedYouTubeSearch();
+  const [playlist, setPlaylist] = useState(defaultPlaylist);
+
+  const addToPlaylist = newId => setPlaylist(oldPlaylist => [...oldPlaylist, newId]);
 
   return (
     <AppContext.Provider
       value={{
         player, playerState, volume, currentTime,
-        playlist, setPlaylist,
+        playlist, setPlaylist, addToPlaylist,
         inputValue, setInputValue,
         search, results, searchLoading,
       }}

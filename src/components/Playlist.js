@@ -11,7 +11,7 @@ const Playlist = () => {
     <div>
       {playlist.map(id => (
         <button onClick={() => player.loadVideoById(id)}>
-          <img src={`https://i.ytimg.com/vi/${id}/default.jpg`} width="30" />
+          <img src={`https://i.ytimg.com/vi/${id}/default.jpg`} width="80" />
           {id}
         </button>
       ))}

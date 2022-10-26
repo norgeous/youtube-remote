@@ -3,16 +3,16 @@ import { useAppContext } from '../contexts/AppContext';
 
 const SearchResults = () => {
   const {
-    setPlaylist,
+    addToPlaylist,
     results, searchLoading,
   } = useAppContext();
 
-  if (searchLoading) return 'Loading';
+  if (searchLoading) return <div>Loading</div>;
 
   return (
     <div>
       {results.map(id => (
-        <button onClick={() => setPlaylist([id])}>
+        <button onClick={() => addToPlaylist(id)}>
           <img src={`https://i.ytimg.com/vi/${id}/default.jpg`} />
           <br />
           {id}
