@@ -26,9 +26,13 @@ const App = () => {
   const [pl,setPl] = useState(playlist);
 
   const magicSearch = async (searchterm) => {
-    const t = await fetch(`https://cors-anywhere.herokuapp.com/https://www.youtube.com/results?search_query=${searchterm}`)
+    const url = `https://www.youtube.com/results?search_query=${searchterm}`;
+    // const url2 = encodeURIComponent(url);
+    const t = await fetch(`https://api.codetabs.com/v1/proxy/?quest=${url}`)
       .then(res => res.text());
+      // .then(res => res.json());
     const ids = [...new Set(t.match(/(?<=videoId":")([A-Za-z0-9_\-]{11})/g))];
+    console.log({url, t, ids})
     setPl(ids);
   };
 
@@ -89,8 +93,12 @@ const App = () => {
       <button onClick={() => player.stopVideo()}>⏏️</button>
 
       <hr />
+
       <button onClick={() => magicSearch('sasasas')}>search sasasas</button>
       <button onClick={() => magicSearch('czarface')}>search czarface</button>
+      <button onClick={() => magicSearch('mfdoom')}>search mfdoom</button>
+      <button onClick={() => magicSearch('luude')}>search luude</button>
+      <button onClick={() => magicSearch('mungos hifi')}>search mungos hifi</button>
 
       <div>
         {pl.map(id => (
