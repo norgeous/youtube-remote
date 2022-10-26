@@ -65,7 +65,11 @@ const App = () => {
       {durationFormat(currentTime)} / {durationFormat(player?.getDuration?.())}<br/>
 
       <br/>
-
+      {player?.isMuted?.() ? (
+        <button onClick={() => player.unMute()}>🔊</button>
+      ) : (
+        <button onClick={() => player.mute()}>🔇</button>
+      )}
       <input
         style={{
           width: 100,
@@ -95,11 +99,6 @@ const App = () => {
       title: {player?.videoTitle}<br/>
       state: {playerState}<br/>
 
-      <div>
-        is muted: {player?.isMuted?.() ? 'true' : 'false'}<br/>
-        <button onClick={() => player.mute()}>mute</button>
-        <button onClick={() => player.unMute()}>unMute</button>
-      </div>
       <button onClick={() => magicSearch('sasasas')}>search sasasas</button>
       <button onClick={() => magicSearch('czarface')}>search czarface</button>
     </>
