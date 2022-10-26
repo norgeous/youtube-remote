@@ -48,8 +48,11 @@ const App = () => {
       </div>
 
        
+      title: {player?.videoTitle}<br/>
+      state: {playerState}<br/>
       
       <div id="player"/>
+
       <br />
       <input
         style={{
@@ -62,9 +65,12 @@ const App = () => {
         value={currentTime}
         onChange={event => player.seekTo(event.target.value)}
       />
-      {durationFormat(currentTime)} / {durationFormat(player?.getDuration?.())}<br/>
 
       <br/>
+
+      {playerState === 'PAUSED' && (<button onClick={() => player.playVideo()}>▶️</button>)}
+      {playerState === 'PLAYING' && (<button onClick={() => player.pauseVideo()}>⏸️</button>)}
+      
       {player?.isMuted?.() ? (
         <button onClick={() => player.unMute()}>🔊</button>
       ) : (
@@ -72,7 +78,7 @@ const App = () => {
       )}
       <input
         style={{
-          width: 100,
+          width: 60,
           accentColor: 'white',
         }}
         type="range"
@@ -81,6 +87,14 @@ const App = () => {
         value={volume}
         onChange={event => player.setVolume(event.target.value)}
       />
+
+      {durationFormat(currentTime)} / {durationFormat(player?.getDuration?.())}
+
+      <button onClick={() => player.stopVideo()}>⏏️</button>
+
+      <hr />
+      <button onClick={() => magicSearch('sasasas')}>search sasasas</button>
+      <button onClick={() => magicSearch('czarface')}>search czarface</button>
 
       <div>
         {pl.map(id => (
@@ -91,16 +105,6 @@ const App = () => {
           </button>
         ))}
       </div>
-      <div>
-        <button onClick={() => player.playVideo()}>play</button>
-        <button onClick={() => player.stopVideo()}>stop</button>
-        <button onClick={() => player.pauseVideo()}>pause</button>
-      </div>
-      title: {player?.videoTitle}<br/>
-      state: {playerState}<br/>
-
-      <button onClick={() => magicSearch('sasasas')}>search sasasas</button>
-      <button onClick={() => magicSearch('czarface')}>search czarface</button>
     </>
   );
 };
