@@ -7,13 +7,14 @@ const predefinedSearchterms = [
   'mfdoom',
   'luude',
   'mungos hifi',
+  'hello world',
+  'black coffee',
 ];
 
 const Search = () => {
   const {
-    player,
     inputValue, setInputValue,
-    search, results, searchLoading,
+    search, searchLoading,
   } = useAppContext();
 
   return (
@@ -34,16 +35,6 @@ const Search = () => {
       <button onClick={() => search(inputValue)}>
         {searchLoading ? '🌀' : '🔍'}
       </button>
-
-      <div>
-        {results.map(id => (
-          <button onClick={() => player.loadVideoById(id)}>
-            <img src={`https://i.ytimg.com/vi/${id}/default.jpg`} />
-            <br />
-            {id}
-          </button>
-        ))}
-      </div>
     </>
   );
 };

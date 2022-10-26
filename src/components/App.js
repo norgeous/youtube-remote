@@ -2,19 +2,9 @@ import React from 'react';
 import { useAppContext } from '../contexts/AppContext';
 // import { BigEmoji } from '../styled-components/BigEmoji';
 import Search from './Search';
-
-const playlist = [
-  'W-59sWasI98',
-  'bMaN0rgPs4c',
-  'fYiuDNUeDRM',
-];
-
-const durationFormat = duration => {
-  const s = String(~~(duration % 60)).padStart(2, '0');
-  const m = String(~~(duration / 60) % 60).padStart(2, '0');
-  const h = String(~~(duration / 3600) % 3600).padStart(2, '0');
-  return `${h}:${m}:${s}`;
-};
+import durationFormat from '../utils/durationFormat';
+import SearchResults from './SearchResults';
+import Playlist from './Playlist';
 
 const App = () => {
   const {
@@ -82,7 +72,12 @@ const App = () => {
 
       <hr />
 
+      <Playlist />
+
+      <hr />
+
       <Search />
+      <SearchResults />
     </>
   );
 };
