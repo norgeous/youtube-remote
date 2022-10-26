@@ -35,6 +35,7 @@ const PlayerControls = () => {
         value={currentTime}
         onChange={event => player.seekTo(event.target.value)}
       />
+      <br />
       <Container>
 
         {playerState !== 'PLAYING' && (<EmojiButton onClick={() => player.playVideo()}>▶️</EmojiButton>)}
