@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAppContext } from '../contexts/AppContext';
-import { BigEmoji } from '../styled-components/BigEmoji';
-
-// import yt from 'youtube-search-without-api-key';
-
-// console.log({yt})
+// import { BigEmoji } from '../styled-components/BigEmoji';
 
 const playlist = [
   'W-59sWasI98',
@@ -38,14 +34,14 @@ const App = () => {
 
   return (
     <>
-      <div>
+      {/* <div>
         <BigEmoji>📺</BigEmoji>
         Player
       </div>
       <div>
         <BigEmoji>🎛️</BigEmoji>
         Controls
-      </div>
+      </div> */}
 
        
       title: {player?.videoTitle}<br/>
