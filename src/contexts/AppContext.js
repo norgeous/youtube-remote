@@ -26,6 +26,10 @@ export const AppProvider = ({ children }) => {
     }
   }, [player, playlistPlayheadIndex]);
 
+  useEffect(() => {
+    if (playerState === 'ENDED') setPlaylistPlayheadIndex(playlistPlayheadIndex + 1);
+  }, [playerState]);
+
   return (
     <AppContext.Provider
       value={{
