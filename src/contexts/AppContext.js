@@ -5,6 +5,7 @@ import useScrapedYouTubeSearch from '../hooks/useScrapedYouTubeSearch';
 const AppContext = createContext({});
 
 const defaultPlaylist = [
+  'Tk6Dbnzpzns',
   'W-59sWasI98',
   'bMaN0rgPs4c',
   'fYiuDNUeDRM',
