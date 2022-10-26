@@ -3,14 +3,16 @@ import { useAppContext } from '../contexts/AppContext';
 
 const Playlist = () => {
   const {
-    player,
     playlist,
+    playlistPlayheadIndex,
+    setPlaylistPlayheadIndex,
   } = useAppContext();
 
   return (
     <div>
-      {playlist.map(id => (
-        <button onClick={() => player.loadVideoById(id)}>
+      {playlist.map((id, index) => (
+        <button onClick={() => setPlaylistPlayheadIndex(index)}>
+          {playlistPlayheadIndex === index && '👉'}
           <img src={`https://i.ytimg.com/vi/${id}/default.jpg`} width="80" />
           {id}
         </button>
