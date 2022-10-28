@@ -5,10 +5,10 @@ import durationFormat from '../utils/durationFormat';
 import EmojiButton from './EmojiButton';
 
 const Container = styled.div`
-  display: inline-flex;
+  display: flex;
   gap: 10px;
   align-items: center;
-  width: 640px;
+  padding: 0 10px;
 `;
 const Spacer = styled.div`
   flex-grow: 1;
@@ -24,18 +24,19 @@ const PlayerControls = () => {
 
   return (
     <>
-      <input
-        style={{
-          width: 640,
-          accentColor: 'red',
-        }}
-        type="range"
-        min={0}
-        max={player?.getDuration?.()}
-        value={currentTime}
-        onChange={event => player.seekTo(event.target.value)}
-      />
-      <br />
+      <Container>
+        <input
+          style={{
+            width: '100%',
+            accentColor: 'red',
+          }}
+          type="range"
+          min={0}
+          max={player?.getDuration?.()}
+          value={currentTime}
+          onChange={event => player.seekTo(event.target.value)}
+        />
+      </Container>
       <Container>
 
         {playerState !== 'PLAYING' && (<EmojiButton onClick={() => player.playVideo()}>▶️</EmojiButton>)}
@@ -64,7 +65,7 @@ const PlayerControls = () => {
 
         <Spacer />
 
-        <EmojiButton>📤</EmojiButton>
+        <EmojiButton onClick={() => player.seekTo(2000)}>📤</EmojiButton>
         <EmojiButton>⚙️</EmojiButton>
         <EmojiButton onClick={() => player.stopVideo()}>⏹</EmojiButton>
         <EmojiButton>↗️</EmojiButton>

@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import { useAppContext } from '../contexts/AppContext';
 import EmojiButton from './EmojiButton';
 
@@ -12,6 +13,20 @@ const predefinedSearchterms = [
   'black coffee',
 ];
 
+const Container = styled.div`
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 0 10px;
+`;
+
+const Input = styled.input`
+  width: 100%;
+  height: 25px;
+  border-radius: 0;
+  border: 0;
+`;
+
 const Search = () => {
   const {
     inputValue, setInputValue,
@@ -19,8 +34,8 @@ const Search = () => {
   } = useAppContext();
 
   return (
-    <>
-      <input
+    <Container>
+      <Input
         type="text"
         list="suggestions"
         placeholder="Search..."
@@ -33,10 +48,10 @@ const Search = () => {
         ))}
       </datalist>
       <EmojiButton onClick={() => setInputValue('')}>❎</EmojiButton>
-      <EmojiButton onClick={() => search(inputValue)}>
+      <EmojiButton onClick={() => search(inputValue)} spin={searchLoading}>
         {searchLoading ? '🌀' : '🔍'}
       </EmojiButton>
-    </>
+    </Container>
   );
 };
 

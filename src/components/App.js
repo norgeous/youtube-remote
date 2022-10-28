@@ -12,19 +12,13 @@ const App = () => {
 
   return (
     <>
-      <Search />
-      <br />
-      <br />
       <div id="player"/>
-      <br />
       <PlayerControls />
-      <br />
       <h1 style={{ fontSize: 20 }}>
         {player?.videoTitle || <>&nbsp;</>}
       </h1>
-      <br />
       <Playlist />
-      <br />
+      <Search />
       <SearchResults />
     </>
   );

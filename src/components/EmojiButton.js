@@ -6,14 +6,18 @@ const Button = styled.button`
   border: none;
   padding: 0;
   margin: 0;
-  font-size: 30px;
+  font-size: 25px;
   cursor: pointer;
   display: inline-block;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const EmojiButton = ({ children, spin = false, ...props }) => (
   <Button {...props}>
-    <span classname={spin && 'spin'}>{children}</span>
+    <div className={spin && 'spin'}>{children}</div>
   </Button>
 );
 
