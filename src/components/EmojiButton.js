@@ -13,6 +13,7 @@ const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-shrink: 0;
 `;
 
 const EmojiButton = ({ children, spin = false, ...props }) => (

@@ -17,7 +17,6 @@ const Container = styled.div`
   display: flex;
   gap: 10px;
   align-items: center;
-  padding: 0 10px;
 `;
 
 const Input = styled.input`

@@ -6,7 +6,6 @@ import EmojiButton from './EmojiButton';
 const List = styled.section`
   display: flex;
   flex-direction: column;
-  padding: 10px;
 `;
 
 const Item = styled.button`

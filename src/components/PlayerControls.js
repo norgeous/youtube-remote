@@ -5,11 +5,18 @@ import durationFormat from '../utils/durationFormat';
 import EmojiButton from './EmojiButton';
 
 const Container = styled.div`
+  border: 1px solid red;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
+const Row = styled.div`
   display: flex;
   gap: 10px;
   align-items: center;
-  padding: 0 10px;
 `;
+
 const Spacer = styled.div`
   flex-grow: 1;
 `;
@@ -23,8 +30,8 @@ const PlayerControls = () => {
   } = useAppContext();
 
   return (
-    <>
-      <Container>
+    <Container>
+      <Row>
         <input
           style={{
             width: '100%',
@@ -36,8 +43,8 @@ const PlayerControls = () => {
           value={currentTime}
           onChange={event => player.seekTo(event.target.value)}
         />
-      </Container>
-      <Container>
+      </Row>
+      <Row>
 
         {playerState !== 'PLAYING' && (<EmojiButton onClick={() => player.playVideo()}>▶️</EmojiButton>)}
         {playerState === 'PLAYING' && (<EmojiButton onClick={() => player.pauseVideo()}>⏸️</EmojiButton>)}
@@ -69,8 +76,8 @@ const PlayerControls = () => {
         <EmojiButton>⚙️</EmojiButton>
         <EmojiButton onClick={() => player.stopVideo()}>⏹</EmojiButton>
         <EmojiButton>↗️</EmojiButton>
-      </Container>
-    </>
+      </Row>
+    </Container>
   );
 };
 
