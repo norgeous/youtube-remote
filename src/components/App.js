@@ -7,12 +7,28 @@ import Playlist from './Playlist';
 import PlayerControls from './PlayerControls';
 
 const Layout = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+  height: 100vh;
+  max-height: 100vh;
+  border: 1px solid #0ff;
+`;
+
+const Columns = styled.div`
+  flex-shrink: 1;
   display: grid;
   gap: 10px;
-  /* align-items: center; */
-  padding: 0 10px;
   grid-template-columns: 1fr 1fr;
-  height: 100vh;
+  height: calc(100% - 133px);
+`;
+
+const Right = styled.div`
+  flex-grow: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 `;
 
 const App = () => {
@@ -23,16 +39,18 @@ const App = () => {
   return (
     <>
       <div id="player"/>
-      <PlayerControls />
-      <h1 style={{ fontSize: 20 }}>
-        {player?.videoTitle || <>&nbsp;</>}
-      </h1>
       <Layout>
-        <Playlist />
-        <div>
-          <Search />
-          <SearchResults />
-        </div>
+        <h1 style={{ fontSize: 20 }}>
+          {player?.videoTitle || <>&nbsp;</>}
+        </h1>
+        <PlayerControls />
+        <Columns>
+          <Playlist />
+          <Right>
+            <Search />
+            <SearchResults />
+          </Right>
+        </Columns>
       </Layout>
     </>
   );

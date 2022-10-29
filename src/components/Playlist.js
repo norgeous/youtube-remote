@@ -4,8 +4,11 @@ import styled from 'styled-components';
 import EmojiButton from './EmojiButton';
 
 const List = styled.section`
+  flex-grow: 1;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
+  height: 100%;
 `;
 
 const Item = styled.button`

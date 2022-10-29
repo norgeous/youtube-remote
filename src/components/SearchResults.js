@@ -4,10 +4,8 @@ import { useAppContext } from '../contexts/AppContext';
 const SearchResults = () => {
   const {
     addToPlaylist,
-    results, searchLoading,
+    results,
   } = useAppContext();
-
-  if (searchLoading) return <div>Loading</div>;
 
   return (
     <div>

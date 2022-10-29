@@ -4,12 +4,21 @@ import useScrapedYouTubeSearch from '../hooks/useScrapedYouTubeSearch';
 
 const AppContext = createContext({});
 
+const playlists = [
+  'RDCLAK5uy_ldlwpMghzMwGCDSOA4Kw6TrOCXDaqXQMo', // grime hotlist (youtube music)
+];
+
 const defaultPlaylist = [
-  'Tk6Dbnzpzns',
-  'W-59sWasI98',
-  'bMaN0rgPs4c',
-  'fYiuDNUeDRM',
-  'VjcV_s9EyBU',
+  'Tk6Dbnzpzns', // coffee
+  'W-59sWasI98', // trombone
+  'bMaN0rgPs4c', // mackey gee
+  'fYiuDNUeDRM', // luude
+  'VjcV_s9EyBU', // lava lamp
+  'VRN-1NSR4gk', // 4k
+  '0ZBqnOeIxbQ', // 8k
+  'vqklX3PTajo', // fireplace
+  'aGSYKFb_zxg', // lofi livesteam
+  'jfKfPfyJRdk', // lofi livesteam
 ];
 
 export const AppProvider = ({ children }) => {
