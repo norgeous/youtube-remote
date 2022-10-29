@@ -11,8 +11,8 @@ const Layout = styled.div`
   flex-direction: column;
   padding: 0 10px;
   height: 100vh;
-  max-height: 100vh;
   border: 1px solid #0ff;
+  box-sizing: border-box;
 `;
 
 const Columns = styled.div`
