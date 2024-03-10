@@ -13,6 +13,10 @@ const useScrapedYouTubeSearch = () => {
       const t = await res.text();
       const ids = [...new Set(t.match(/(?<=videoId":")([A-Za-z0-9_\-]{11})/g))];
       setResults(ids);
+
+      const ytInitialData = JSON.parse(t.match(/(?<=var ytInitialData = )(.*)(?=;)/)[0]);
+      const { contents } = ytInitialData.contents.twoColumnSearchResultsRenderer.primaryContents.sectionListRenderer;
+      console.log({ contents });
     });
   }, [setLoading, setResults]);
 
