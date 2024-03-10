@@ -14,7 +14,10 @@ const useScrapedYouTubeSearch = () => {
       const ids = [...new Set(t.match(/(?<=videoId":")([A-Za-z0-9_\-]{11})/g))];
       setResults(ids);
 
-      const ytInitialData = JSON.parse(t.match(/(?<=var ytInitialData = )(.*)(?=;)/)[0]);
+      const ytInitialDataStr = JSON.parse(t.match(/(?<=var ytInitialData = )(.*)(?=;)/)[0]);
+      console.log({ ytInitialDataStr });
+      const ytInitialData = JSON.parse(ytInitialDataStr);
+      console.log({ ytInitialData });
       const { contents } = ytInitialData.contents.twoColumnSearchResultsRenderer.primaryContents.sectionListRenderer;
       console.log({ contents });
     });
